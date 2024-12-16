@@ -401,17 +401,17 @@ KA_WARNING_POP()
     }
   };
 
-  template <>
+  extern template
   Network::_anyAsyncReaderSocket<Network::ssl_socket_type>
     Network::SocketFunctions<Network::ssl_socket_type>::_async_read_socket;
-  template <>
+  extern template
   Network::_anyAsyncReaderSocket<qi::sock::SocketWithContext<Network>>
     Network::SocketFunctions<qi::sock::SocketWithContext<Network>>::_async_read_socket;
 
-  template <>
+  extern template
   Network::_anyAsyncWriterSocket<Network::ssl_socket_type>
     Network::SocketFunctions<Network::ssl_socket_type>::_async_write_socket;
-  template <>
+  extern template
   Network::_anyAsyncWriterSocket<qi::sock::SocketWithContext<Network>>
       Network::SocketFunctions<qi::sock::SocketWithContext<Network>>::_async_write_socket;
 

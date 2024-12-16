@@ -13,6 +13,7 @@
 # include <vector>
 # include <locale>
 # include <iosfwd>
+# include <ostream>
 # include <qi/api.hpp>
 
 namespace boost { namespace filesystem {

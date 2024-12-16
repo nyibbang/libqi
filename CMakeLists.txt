@@ -698,6 +698,8 @@ target_compile_definitions(
   qi_objects
   PUBLIC
     BOOST_FILESYSTEM_VERSION=3
+  PRIVATE
+    qi_EXPORTS
 )
 
 if(WITH_BOOST_LOCALE)

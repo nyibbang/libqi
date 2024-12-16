@@ -181,8 +181,7 @@ class QiConan(ConanFile):
 
     def validate(self):
         # Require at least C++17
-        if self.settings.compiler.cppstd:
-            tools.build.check_min_cppstd(self, "17", gnu_extensions=True)
+        tools.build.check_min_cppstd(self, "17")
 
     def build(self):
         cmake = CMake(self)

@@ -201,8 +201,11 @@ TEST(FunctionalCompose, Regular) {
   using namespace ka;
   using namespace std;
   using C = composition_t<string (*)(bool), bool (*)(float)>;
+  auto is_nan = +[](float f) { return isnan(f); };
+  auto is_finite = +[](float f) { return isfinite(f); };
+  auto is_inf = +[](float f) { return isinf(f); };
   ASSERT_TRUE(is_regular({
-    C{strbool0, isnan}, C{strbool0, isfinite}, C{strbool1, isinf}
+    C{strbool0, is_nan}, C{strbool0, is_finite}, C{strbool1, is_inf}
   }));
 }
 

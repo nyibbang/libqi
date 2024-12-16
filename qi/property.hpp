@@ -16,6 +16,7 @@
 #include <qi/signal.hpp>
 #include <qi/future.hpp>
 #include <qi/strand.hpp>
+#include <type_traits>
 
 KA_WARNING_PUSH()
 // needs to have dll-interface to be used by clients
@@ -114,19 +115,19 @@ namespace qi
     // futT = f(t)
     template<typename F, typename T>
     using IsGetterAsync =
-      std::is_convertible<ka::ResultOf<F(boost::reference_wrapper<const T>)>,
+      std::is_convertible<std::invoke_result_t<F, boost::reference_wrapper<const T>>,
                           Future<T>>;
 
     // mustInvoke = f(value, new)
     template<typename F, typename T>
     using IsSetterSync = std::is_convertible<
-      ka::ResultOf<F(boost::reference_wrapper<T>, const T&)>,
+      std::invoke_result_t<F, boost::reference_wrapper<T>, const T&>,
       bool>;
 
     // futMustInvoke = f(value, new)
     template<typename F, typename T>
     using IsSetterAsync = std::is_convertible<
-      ka::ResultOf<F(boost::reference_wrapper<T>, const T&)>,
+      std::invoke_result_t<F, boost::reference_wrapper<T>, const T&>,
       Future<bool>>;
 
     template<typename F, typename T>
